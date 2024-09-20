@@ -1,0 +1,11 @@
+.side-bar{
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 200px;
+    height: calc(100% - 50px); 
+    background-color: #444;
+    color: white;
+    padding: 15px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); 
+}
