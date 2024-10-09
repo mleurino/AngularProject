@@ -3,20 +3,27 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TopBarComponent } from './componentes/top-bar/top-bar.component';
-import { SideBarComponent } from './componentes/side-bar/side-bar.component';
+import { ListaAlumnosComponent } from './componentes/lista-alumnos/lista-alumnos.component';
+import { ModalComponent } from './componentes/modal/modal.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { PanelModule } from './pages/panel/panel.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    TopBarComponent,
-    SideBarComponent
+    ListaAlumnosComponent,
+    ModalComponent,
+   
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PanelModule
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
