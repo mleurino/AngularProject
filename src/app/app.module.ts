@@ -7,6 +7,7 @@ import { ListaAlumnosComponent } from './componentes/lista-alumnos/lista-alumnos
 import { ModalComponent } from './componentes/modal/modal.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { PanelModule } from './pages/panel/panel.module';
+import { AutenticadorModule } from './pages/autenticador/autenticador.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { PanelModule } from './pages/panel/panel.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PanelModule
+    PanelModule,
+    AutenticadorModule
   ],
   providers: [
     provideAnimationsAsync()

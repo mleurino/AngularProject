@@ -14,6 +14,7 @@ import { NombreCompletoUsuarioPipe } from './pipes/nombrecompletousuario.pipe';
 import { ResaltadoDirective } from './directivas/resaltado.directive';
 import { RepeticionDirective } from './directivas/repeticion.directive';
 import { FontSizeDirective } from './helpers/fontsize.directive';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 @NgModule({
   declarations: [
     NombreCompletoUsuarioPipe,
@@ -37,7 +38,8 @@ import { FontSizeDirective } from './helpers/fontsize.directive';
     NombreCompletoUsuarioPipe,
     ResaltadoDirective,
     RepeticionDirective,
-    FontSizeDirective
+    FontSizeDirective, 
+    MatProgressSpinnerModule
   ],
 })
 export class LinksImportadosModule { }

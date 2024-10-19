@@ -5,12 +5,14 @@ import { UsuariosRoutingModule } from './usuarios-routing.module';
 import { UsuariosComponent } from './usuarios.component';
 import { DialogoUsuariosComponent } from './dialogo-usuarios/dialogo-usuarios.component';
 import { LinksImportadosModule } from '../../../links-importados/links-importados.module';
+import { DetalleusuarioComponent } from './detalleusuario/detalleusuario.component';
 
 
 @NgModule({
   declarations: [
     UsuariosComponent,
-    DialogoUsuariosComponent
+    DialogoUsuariosComponent,
+    DetalleusuarioComponent
   ],
   imports: [
     CommonModule,

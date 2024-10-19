@@ -1,21 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogoUsuariosComponent } from './dialogo-usuarios/dialogo-usuarios.component';
-import { Usuario } from './modelos';
+
+import { ServiciosUsuariosService } from '../../../nucleo/servicios/servicios-usuarios.service';
+import { Usuario } from './modelos/index';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 
 
-const ELEMENT_DATA: Usuario[] = [
-  {
-    id: 1,
-    nombre: 'Maximiliano',
-    apellido: 'Leurino',
-    email: 'mleurino8@gmail.com',
-    creadoFecha: new Date,
-    Aprobado: true,
-  }
-];
+
 
 
 @Component({
@@ -23,14 +17,48 @@ const ELEMENT_DATA: Usuario[] = [
   templateUrl: './usuarios.component.html',
   styleUrl: './usuarios.component.scss'
 })
-export class UsuariosComponent {
+export class UsuariosComponent implements OnInit {
 
   displayedColumns: any[] = ['ID', 'Nombre', 'Email', 'Creado', 'Aprobado', 'Opciones'];
-  dataSource = ELEMENT_DATA;
+  dataSource: Usuario[]  =[];
 
-  constructor(private matDialog: MatDialog){}
+  estaCargando=false;
+
+  constructor(private matDialog: MatDialog, private usersService: ServiciosUsuariosService,
+    private router: Router, private activatedRoute: ActivatedRoute,
+  ){}
 
   
+
+  ngOnInit(): void {
+    this.cargarUsuarios();
+  }
+
+  irADetalle(id: string): void {
+    this.router.navigate([id, 'detail'], {
+      relativeTo: this.activatedRoute,
+    });
+  }
+
+
+
+  cargarUsuarios():void{
+    this.estaCargando=true;
+    this.usersService.obtenerUsuario().subscribe({
+      next: (usuarios) => {
+        this.dataSource= usuarios
+        
+      },
+      error:()=>{
+        this.estaCargando=false;
+      },
+      complete:() => {
+        this.estaCargando=false;
+      }
+    })
+  }
+
+
     borrarFila(id: number): void {
       console.log(`Borrando usuario con ID: ${id}`);
       this.dataSource = this.dataSource.filter((usuario)=> 

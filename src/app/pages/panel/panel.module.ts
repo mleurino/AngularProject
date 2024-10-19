@@ -8,11 +8,14 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { CursosModule } from './cursos/cursos.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
+import { MatListModule } from '@angular/material/list';
+
 
 
 @NgModule({
   declarations: [
-    PanelComponent
+    PanelComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -22,7 +25,9 @@ import { UsuariosModule } from './usuarios/usuarios.module';
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
-    UsuariosModule
+    UsuariosModule,
+    MatListModule,
+  
   ],
   exports:[
     PanelComponent
