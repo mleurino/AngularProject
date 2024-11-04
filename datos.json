@@ -1,0 +1,34 @@
+{
+  "usuarios": [
+    {
+      "id": "4d22",
+      "nombre": "Maximiliano",
+      "apellido": "Leurino",
+      "email": "mleurino1234@gmail.com",
+      "contraseña": "12345678",
+      "rol": "ADMIN",
+      "token": "asdfghjklñzxcvbnmqwe",
+      "createdAt": "2024-11-02T12:21:01.719Z"
+    },
+    {
+      "id": "71be",
+      "nombre": "Homero",
+      "apellido": "Simpson",
+      "email": "hsimpson1234@gmail.com",
+      "contraseña": "123456789",
+      "rol": "ALUMNO",
+      "token": "mjgjhgfghjhgfghjhgfd"
+    },
+    {
+      "id": "xHfQF",
+      "nombre": "asdasdadasdsad",
+      "apellido": "Leurino",
+      "email": "mleurino8@gmail.com",
+      "creadoFecha": "2024-11-04T19:38:12.031Z",
+      "role": "USER",
+      "password": "f4pOFDqW",
+      "token": "scxhDvdbdBhrqRMR8Xff",
+      "createdAt": "2024-11-04T19:38:12.117Z"
+    }
+  ]
+}

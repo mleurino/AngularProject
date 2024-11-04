@@ -8,6 +8,7 @@ import { ModalComponent } from './componentes/modal/modal.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { PanelModule } from './pages/panel/panel.module';
 import { AutenticadorModule } from './pages/autenticador/autenticador.module';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { AutenticadorModule } from './pages/autenticador/autenticador.module';
     AutenticadorModule
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideHttpClient(withFetch())
   ],
   bootstrap: [AppComponent]
 })

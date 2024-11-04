@@ -11,20 +11,33 @@
         #cursosLink="routerLinkActive"
         [activated]="cursosLink.isActive"
         mat-list-item>CURSOS</a>
-        <a routerLink="autenticacion/login" mat-list-item>CERRAR SESIÓN</a>
+        <a routerLink="productos" routerLinkActive
+        #productosLink="routerLinkActive"
+        [activated]="productosLink.isActive"
+        mat-list-item>CURSOS</a>
+        <a (click)="logout()" mat-list-item>CERRAR SESIÓN</a>
       </mat-nav-list>
     </mat-drawer>
   
     <div class="example-sidenav-content">
       <mat-toolbar>
-        <button mat-icon-button class="example-icon"
-        (click)="drawer.toggle()"
-         aria-label="Example icon-button with menu icon">
-          <mat-icon>menu</mat-icon>
-        </button>
-        <span >ACA<span id="dev">DEV</span>MIA</span> 
-        <span class="example-spacer"></span>
+        <div class="d-flex justify-content-between align-items-center w-100 h-100">
+          <div>
+            <button mat-icon-button class="example-icon"
+            (click)="drawer.toggle()"
+            aria-label="Example icon-button with menu icon">
+            <mat-icon>menu</mat-icon>
+            </button>
+            <span >ACA<span id="dev">DEV</span>MIA</span> 
+            <span class="example-spacer"></span>
        
+          </div>
+          <div *ngIf='authUser | async; let authUser'>
+            <p>{{ authUser.nombre }} {{ authUser.apellido }}</p>
+          </div>
+         
+        </div>
+        
       </mat-toolbar>
 
      <router-outlet></router-outlet>

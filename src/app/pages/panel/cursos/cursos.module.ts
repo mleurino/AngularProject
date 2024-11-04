@@ -4,11 +4,13 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { CursosRoutingModule } from './cursos-routing.module';
 import { CursosComponent } from './cursos.component';
+import { DetalleCursosComponent } from './detalle-cursos/detalle-cursos.component';
 
 
 @NgModule({
   declarations: [
-    CursosComponent
+    CursosComponent,
+    DetalleCursosComponent
   ],
   imports: [
     CommonModule,

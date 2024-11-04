@@ -6,8 +6,6 @@ import { PanelComponent } from './panel.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
-import { CursosModule } from './cursos/cursos.module';
-import { UsuariosModule } from './usuarios/usuarios.module';
 import { MatListModule } from '@angular/material/list';
 
 
@@ -20,12 +18,12 @@ import { MatListModule } from '@angular/material/list';
   imports: [
     CommonModule,
     PanelRoutingModule,
-    CursosModule,
+    
     MatSidenavModule,
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
-    UsuariosModule,
+    
     MatListModule,
   
   ],

@@ -59,12 +59,23 @@ export class UsuariosComponent implements OnInit {
   }
 
 
-    borrarFila(id: number): void {
-      console.log(`Borrando usuario con ID: ${id}`);
-      this.dataSource = this.dataSource.filter((usuario)=> 
-        usuario.id !== id
-      )
+  borrarFila(id: string) {
+    if (confirm('Desea eliminar este alumno?')) {
+      
+      this.estaCargando = true;
+      this.usersService.removerUsuario(id).subscribe({
+        next: (usuarios) => {
+          this.dataSource = usuarios;
+        },
+        error: (err) => {
+          this.estaCargando = false;
+        },
+        complete: () => {
+          this.estaCargando = false;
+        },
+      });
     }
+  }
 
 
     abrirModal(editandoUsuario?: Usuario): void{
@@ -79,16 +90,30 @@ export class UsuariosComponent implements OnInit {
             if(!!resultado){
 
               if (editandoUsuario){
-                this.dataSource = this.dataSource.map((usuario) =>
-                usuario.id === editandoUsuario.id ? {...usuario, ...resultado} : usuario)
+                this.ActualizarUsuario(editandoUsuario.id, resultado);
               } else {
-              this.dataSource = [
-                ...this.dataSource,{...resultado}]
+              this.usersService.crearUsuario(resultado).subscribe({next: () => this.cargarUsuarios()})
               }
             
             }
           })
         });
     } 
+  
+
+    ActualizarUsuario(id: any, update: Usuario): void {
+      this.estaCargando = true;
+      this.usersService.actualizarUsuario(id, update).subscribe({
+        next: (users) => {
+          this.dataSource = users;
+        },
+        error: (err) => {
+          this.estaCargando = false;
+        },
+        complete: () => {
+          this.estaCargando = false;
+        },
+      });
+    }
   
 }
