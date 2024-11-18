@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +9,11 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { PanelModule } from './pages/panel/panel.module';
 import { AutenticadorModule } from './pages/autenticador/autenticador.module';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { RootReducer } from './store';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 
 @NgModule({
@@ -22,10 +27,15 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     PanelModule,
-    AutenticadorModule
+    AutenticadorModule,
+    StoreModule.forRoot(RootReducer, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    EffectsModule.forRoot([]),
+    
   ],
   providers: [
     provideAnimationsAsync(),
+    provideNativeDateAdapter(),
     provideHttpClient(withFetch())
   ],
   bootstrap: [AppComponent]

@@ -22,6 +22,10 @@ const routes: Routes = [
     loadChildren: () => import('./productos/productos.module').then((m) => m.ProductosModule),
   },
   {
+    path:'ventas',
+    loadChildren: ()=> import('./inscripciones/inscripciones.module').then((m) => m.InscripcionesModule),
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }

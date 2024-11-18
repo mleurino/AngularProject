@@ -7,14 +7,15 @@
         <a routerLink="usuarios" routerLinkActive #usuariosLink="routerLinkActive"
         [activated]="usuariosLink.isActive"
          mat-list-item>USUARIOS</a>
-        <a routerLink="cursos" routerLinkActive
-        #cursosLink="routerLinkActive"
-        [activated]="cursosLink.isActive"
-        mat-list-item>CURSOS</a>
+       
         <a routerLink="productos" routerLinkActive
         #productosLink="routerLinkActive"
         [activated]="productosLink.isActive"
         mat-list-item>CURSOS</a>
+        <a routerLink="ventas" routerLinkActive
+        #ventasLink="routerLinkActive"
+        [activated]="ventasLink.isActive"
+        mat-list-item>INSCRIPCIONES</a>
         <a (click)="logout()" mat-list-item>CERRAR SESIÓN</a>
       </mat-nav-list>
     </mat-drawer>

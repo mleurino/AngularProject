@@ -1,0 +1,31 @@
+<form [formGroup]="inscForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Producto</mat-label>
+      <mat-select formControlName="productId">
+        <mat-option
+          [value]="producto.id"
+          *ngFor="let producto of productoOpciones$ | async"
+        >
+          {{ producto.nombre }} - {{ producto.precio| currency }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Usuario</mat-label>
+      <mat-select formControlName="userId">
+        <mat-option [value]="usuario.id" *ngFor="let usuario of userOptions$ | async">
+          {{ usuario.nombre }} {{ usuario.apellido }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button type="submit" mat-flat-button>Guardar</button>
+  </form>
+  
+  @if(cargandoInsc$| async) {
+  <mat-spinner></mat-spinner>
+  }@else { @if (cargarInscError$ | async; as error) {
+  <h2>Oops! Ocurrio un error!</h2>
+  <p>{{ error["message"] }}</p>
+  } @else {
+  <pre>{{ inscripciones$ | async | json }}</pre>
+  } }

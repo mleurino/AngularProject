@@ -23,7 +23,7 @@ import { environment } from "../../../environments/environment";
         constructor(private router:Router, private httpCliente: HttpClient){}
         private manejarAutententicacion (usuarios: Usuario[]): Usuario | null {
             if (!!usuarios[0]){
-                this.__authUser.next(usuarios[0]);
+              //  this.__authUser.next(usuarios[0]);
                 localStorage.setItem('token' ,usuarios[0].token)
                 return usuarios[0];
             }else{
