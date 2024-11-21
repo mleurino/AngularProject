@@ -1,3 +1,4 @@
+
 <form [formGroup]="inscForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <mat-label>Producto</mat-label>
@@ -6,7 +7,7 @@
           [value]="producto.id"
           *ngFor="let producto of productoOpciones$ | async"
         >
-          {{ producto.nombre }} - {{ producto.precio| currency }}
+          {{ producto.nombre }} - {{ producto.precio| currency }} {{ producto.id }}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -14,7 +15,7 @@
       <mat-label>Usuario</mat-label>
       <mat-select formControlName="userId">
         <mat-option [value]="usuario.id" *ngFor="let usuario of userOptions$ | async">
-          {{ usuario.nombre }} {{ usuario.apellido }}
+          {{ usuario.nombre }} {{ usuario.apellido }} {{usuario.id}}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -27,5 +28,36 @@
   <h2>Oops! Ocurrio un error!</h2>
   <p>{{ error["message"] }}</p>
   } @else {
-  <pre>{{ inscripciones$ | async | json }}</pre>
+   
+    <div *ngIf="inscripciones$ | async as inscripciones; else cargando">
+      <div *ngIf="inscripciones.length > 0; else sinDatos">
+        <table mat-table [dataSource]="inscripciones" class="mat-elevation-z8">
+    
+          <!-- Columna: Producto -->
+          <ng-container matColumnDef="productId">
+            <th mat-header-cell *matHeaderCellDef> Producto </th>
+            <td mat-cell *matCellDef="let inscripcion"> {{ inscripcion.productId }} </td>
+          </ng-container>
+    
+          <!-- Columna: Usuario -->
+          <ng-container matColumnDef="userOptions">
+            <th mat-header-cell *matHeaderCellDef> Usuario </th>
+            <td mat-cell *matCellDef="let inscripcion"> {{  inscripcion.userId }} </td>
+          </ng-container>
+    
+          <!-- Encabezado de la tabla -->
+          <tr mat-header-row *matHeaderRowDef="['productId', 'userOptions']"></tr>
+          <!-- Filas de la tabla -->
+          <tr mat-row *matRowDef="let row; columns: ['productId', 'userOptions'];"></tr>
+        </table>
+      </div>
+    </div>
+    
+    <ng-template #cargando>
+      <p>Cargando inscripciones...</p>
+    </ng-template>
+    
+    <ng-template #sinDatos>
+      <p>No hay inscripciones disponibles.</p>
+    </ng-template>
   } }

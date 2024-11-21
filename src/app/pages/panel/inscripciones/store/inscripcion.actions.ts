@@ -10,7 +10,7 @@ export const InscripcionActions = createActionGroup({
     
     'Cargar Inscripcion Exito': props<{ data: Inscripcion[] }>(),
 
-    // El servidor responde con un error
+    
     'Cargar Inscripcion Falla': props<{ error: Error }>(),
 
 
@@ -18,7 +18,7 @@ export const InscripcionActions = createActionGroup({
 
 
 
-    'Crear Inscripcion': props<{ productId: string; userId: string }>(),
+    'Crear Inscripcion': props<{ productId: string; userId: string; user?: string }>(),
     'Crear Inscripcion Exito': props<{ data: Inscripcion }>(),
     'Crear Inscripcion Falla': props<{ error: Error }>(),
 

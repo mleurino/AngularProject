@@ -11,7 +11,8 @@ const INSCRIPCIONDB: Inscripcion[] =[
   {
     id: 'asdasdasdsa',
     productId: 'asdafa',
-    userId: 'asdafefg'
+    userId: 'asdafefg',
+  
   }
 ]
 
@@ -97,7 +98,7 @@ export const reducer = createReducer(
   on(InscripcionActions.cargarInscripcion, (state) => {
     return {
       ...state,
-      inscripcion:[...INSCRIPCIONDB],
+      cargandoInscripcion: true,
     };
   }),
   on(InscripcionActions.cargarInscripcionExito, (state, action) => {
@@ -120,13 +121,7 @@ export const reducer = createReducer(
   on(InscripcionActions.cargarOpcionesDeProductoYUsuario, (state) => {
     return {
       ...state,
-      productoOpciones:[...PRODUCTDB]
-    };
-  }),
-  on(InscripcionActions.cargarOpcionesDeProductoYUsuario, (state) => {
-    return {
-      ...state,
-      usuarioOpciones:[...USUARIODB]
+      cargandoInscripcion: true,
     };
   }),
   on(InscripcionActions.cargarOpcionesDeProductoYUsuarioExito, (state, action) => {

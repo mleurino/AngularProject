@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { combineLatest, map, Observable } from 'rxjs';
 import { Producto } from '../productos/modelos';
 import { Usuario } from '../usuarios/modelos';
 import { Inscripcion } from './modelos';
@@ -19,27 +19,30 @@ export class InscripcionesComponent implements OnInit {
   productoOpciones$: Observable<Producto[]>;
   cargarInscError$: Observable<Error | null>;
   cargandoInsc$: Observable<boolean>;
+  
 
   inscForm: FormGroup;
+
+  
 
   constructor(private store: Store, private formBuilder: FormBuilder) {
     this.inscForm = this.formBuilder.group({
       productId: [null, [Validators.required]],
       userId: [null, [Validators.required]],
     });
-
+    
     this.inscripciones$ = this.store.select(selectInsc);
     this.productoOpciones$ = this.store.select(selectProductoOpciones);
     this.userOptions$ = this.store.select(selectUsuarioOpciones);
     this.cargandoInsc$ = this.store.select(selectCargando);
     this.cargarInscError$ = this.store.select(selectCargandoError);
+    
   }
 
   ngOnInit(): void {
     this.store.dispatch(InscripcionActions.cargarInscripcion());
     this.store.dispatch(InscripcionActions.cargarOpcionesDeProductoYUsuario());
-    // this.store.dispatch(SaleActions.loadProductOptions());
-    // this.store.dispatch(SaleActions.loadUserOptions());
+    console.log(InscripcionActions.cargarInscripcion())
   }
 
   onSubmit(): void {
@@ -50,5 +53,6 @@ export class InscripcionesComponent implements OnInit {
       this.inscForm.reset();
     }
   }
+  
 }
 

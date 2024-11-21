@@ -1,0 +1,21 @@
+mat-card {
+    margin: 16px;
+  }
+  
+  mat-form-field {
+    width: 50%;
+    display: block;
+    margin: 10px;
+  }
+  
+  .table-container {
+    overflow: auto;
+    max-height: 400px;
+  }
+  
+  .spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+  }

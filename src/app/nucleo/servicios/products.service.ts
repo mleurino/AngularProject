@@ -2,6 +2,8 @@ import { Injectable } from "@angular/core";
 import { generarId } from "../../links-importados/helpers";
 import { Producto } from "../../pages/panel/productos/modelos";
 import { Observable, of } from "rxjs";
+import { environment } from "../../../environments/environment";
+import { HttpClient } from "@angular/common/http";
 
 export let CURSE_DATABASE: Producto[] = [
     {
@@ -40,7 +42,12 @@ export class ServicioProductos {
 
 
 
-    obtenerProductos(): Observable<Producto[]>{
-        return of([...CURSE_DATABASE]);
+  constructor(private httpClient: HttpClient){}
+
+  obtenerProductos(): Observable<Producto[]>{
+    return this.httpClient.get<Producto[]>(`${environment.apiBaseURL}/productos`);
+  //of([...CURSE_DATABASE]);
+        
+        
     }
 }
