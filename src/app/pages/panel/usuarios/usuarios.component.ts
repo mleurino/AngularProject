@@ -5,6 +5,8 @@ import { DialogoUsuariosComponent } from './dialogo-usuarios/dialogo-usuarios.co
 import { ServiciosUsuariosService } from '../../../nucleo/servicios/servicios-usuarios.service';
 import { Usuario } from './modelos/index';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AutenticacionServicio } from '../../../nucleo/servicios/aut.services';
+import { Observable } from 'rxjs';
 
 
 
@@ -18,15 +20,17 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './usuarios.component.scss'
 })
 export class UsuariosComponent implements OnInit {
-
+  authUser$ : Observable<Usuario | null>;
   displayedColumns: any[] = ['ID', 'Nombre', 'Email', 'Creado', 'Aprobado', 'Opciones'];
   dataSource: Usuario[]  =[];
 
   estaCargando=false;
 
   constructor(private matDialog: MatDialog, private usersService: ServiciosUsuariosService,
-    private router: Router, private activatedRoute: ActivatedRoute,
-  ){}
+    private router: Router, private activatedRoute: ActivatedRoute, private authService: AutenticacionServicio
+  ){
+    this.authUser$ = this.authService.authUser
+  }
 
   
 
@@ -79,6 +83,7 @@ export class UsuariosComponent implements OnInit {
 
 
     abrirModal(editandoUsuario?: Usuario): void{
+      
       this.matDialog.open(DialogoUsuariosComponent, {
         data:{
           editandoUsuario
@@ -99,7 +104,7 @@ export class UsuariosComponent implements OnInit {
           })
         });
     } 
-  
+    
 
     ActualizarUsuario(id: any, update: Usuario): void {
       this.estaCargando = true;

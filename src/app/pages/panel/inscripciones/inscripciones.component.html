@@ -28,7 +28,7 @@
   <h2>Oops! Ocurrio un error!</h2>
   <p>{{ error["message"] }}</p>
   } @else {
-   
+    
     <div *ngIf="inscripciones$ | async as inscripciones; else cargando">
       <div *ngIf="inscripciones.length > 0; else sinDatos">
         <table mat-table [dataSource]="inscripciones" class="mat-elevation-z8">

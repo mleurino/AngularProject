@@ -16,8 +16,9 @@
       "apellido": "Simpson",
       "email": "hsimpson1234@gmail.com",
       "contraseña": "123456789",
-      "rol": "ALUMNO",
-      "token": "mjgjhgfghjhgfghjhgfd"
+      "rol": "USER",
+      "token": "mjgjhgfghjhgfghjhgfd",
+      "createdAt": "2024-11-05T02:47:44.058Z"
     },
     {
       "id": "uGRaW",
@@ -25,10 +26,21 @@
       "apellido": "Simpson",
       "email": "elbarto@gmail.com",
       "creadoFecha": "2024-11-05T02:48:11.655Z",
-      "role": "USER",
+      "rol": "USER",
       "password": "3WPDNs1K",
       "token": "x3iQ7JWB8ciVL2vJIR9B",
       "createdAt": "2024-11-05T02:47:44.058Z"
+    },
+    {
+      "id": "q0nd",
+      "nombre": "Maximiliano",
+      "apellido": "Leurino",
+      "email": "mleurino8@gmail.com",
+      "contraseña": "123456",
+      "rol": "USER",
+      "token": "gX22514FFlFazas35TC5",
+      "creadoFecha": "2024-11-25T14:26:05.045Z",
+      "Aprobado": false
     }
   ],
   "productos": [
@@ -62,7 +74,6 @@
     }
   ],
   "inscripciones": [
-    
     {
       "id": "12ce",
       "productId": "XwG9",
@@ -77,6 +88,11 @@
       "id": "b905",
       "productId": "qw54",
       "userId": "4d22"
+    },
+    {
+      "id": "c8ec",
+      "productId": "qw54",
+      "userId": "q0nd"
     }
   ]
 }

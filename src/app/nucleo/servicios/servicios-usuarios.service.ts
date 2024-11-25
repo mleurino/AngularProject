@@ -14,6 +14,7 @@ const BASEDATOS_USUARIOS: Usuario[] = [
     apellido: 'Leurino',
     contraseña: '12345678',
     email: 'mleurino8@gmail.com',
+    rol: 'ADMIN',
     creadoFecha: new Date,
     Aprobado: true,
     token: generarId(20) ,
@@ -43,7 +44,7 @@ export class ServiciosUsuariosService {
   crearUsuario(data: Omit<Usuario, 'id'>): Observable<Usuario> {
     return this.httpClient.post<Usuario>(`${this.baseURL}/usuarios`, {
       ...data,
-      role: 'USER',
+      rol: "USER",
       password: generarId(8),
       token: generarId(20),
       createdAt: new Date().toISOString(),

@@ -33,6 +33,11 @@ export class LoginComponent {
     }
   }
 
+  goToRegister(): void {
+    this.router.navigate(['autenticacion','register']);
+  }
+
+
   onSubmit(): void {
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();

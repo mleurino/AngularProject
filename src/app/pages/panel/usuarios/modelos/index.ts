@@ -4,6 +4,7 @@ export interface Usuario {
     apellido: string,
     contraseña: string,
     email: string,
+    rol: string,
     token: string,
     creadoFecha: Date,
     Aprobado: boolean

@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { generarId } from "../../links-importados/helpers";
 import { Usuario } from "../../pages/panel/usuarios/modelos";
 import { AutenticacionData } from '../../pages/autenticador/modelos/index';
-import { BehaviorSubject, map, Observable, of, throwError } from "rxjs";
+import { BehaviorSubject, catchError, map, Observable, of, throwError } from "rxjs";
 import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
@@ -20,7 +20,9 @@ import { environment } from "../../../environments/environment";
         private baseURL = environment.apiBaseURL;
 
 
-        constructor(private router:Router, private httpCliente: HttpClient){}
+        constructor(private router:Router, private httpCliente: HttpClient){
+           
+        }
         private manejarAutententicacion (usuarios: Usuario[]): Usuario | null {
             if (!!usuarios[0]){
               //  this.__authUser.next(usuarios[0]);
@@ -62,4 +64,21 @@ import { environment } from "../../../environments/environment";
 
          
         }
-    }
+        registrarUsuario(nuevoUsuario: Usuario): Observable<Usuario> {
+            return this.httpCliente.post<Usuario>(`${this.baseURL}/usuarios`, nuevoUsuario)
+              .pipe(
+                map((usuarioCreado) => {
+                  // Autenticar al usuario luego de crearlo
+                  this.__authUser.next(usuarioCreado);
+                  localStorage.setItem('token', usuarioCreado.token);
+                  return usuarioCreado;
+                }),
+                catchError(error => {
+                  console.error('Error al registrar el usuario', error);
+                  throw error;  // Puede mostrar el error al usuario en el componente
+                })
+              );
+          }
+        }
+    
+    

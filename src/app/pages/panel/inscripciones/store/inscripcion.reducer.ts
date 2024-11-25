@@ -40,6 +40,7 @@ const USUARIODB: Usuario[]=[
     apellido: "Leurino",
     email: "mleurino1234@gmail.com",
     contraseña: "12345678",
+    rol: 'ADMIN',
     
     token: "asdfghjklñzxcvbnmqwe",
     creadoFecha: new Date( "2024-11-02T12:21:01.719Z"),
@@ -51,6 +52,7 @@ const USUARIODB: Usuario[]=[
     apellido: "Simpson",
     email: "hsimpson1234@gmail.com",
     contraseña: "123456789",
+    rol: 'USER',
     token: "mjgjhgfghjhgfghjhgfd",
     creadoFecha: new Date("2024-11-02T12:21:01.719Z"),
     Aprobado: true
@@ -61,6 +63,7 @@ const USUARIODB: Usuario[]=[
     apellido: "Simpson",
     email: "elbarto@gmail.com",
     contraseña: "123456789",
+    rol: 'USER',
     token: "x3iQ7JWB8ciVL2vJIR9B",
     creadoFecha: new Date("2024-11-05T02:47:44.058Z"),
     Aprobado: true
